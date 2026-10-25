@@ -1,0 +1,6 @@
+{
+  "name": "WAYPOINT AI — When plans break, your journey doesn't.",
+  "description": "AI Agent for Travel Disruption Recovery (DEVHOST 2026 PS 4.1). Intelligently compares alternative flights, trains, and connections.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
