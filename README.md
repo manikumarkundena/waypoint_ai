@@ -1,83 +1,112 @@
-# WAYPOINT AI — Personal Travel Recovery Assistant
+# WAYPOINT AI — Travel Disruption Recovery
 
-> **Tagline:** *"Plans change. We've got your next move."*  
-> **Status:** Production-Ready Consumer Travel-Tech Product  
+> **Tagline:** *When plans break, your journey doesn’t.*
+>
+> **DEVHOST 2026 · Problem Statement PS 4.1 — AI Agent for Travel Disruption Recovery**
+>
+> ⚠️ **IMPORTANT — CORRECT LIVE DEMO LINK:** Use **https://waypointai-gold.vercel.app/**. The previously shared URL `https://waypoint_ai.vercel.app/` was incorrect. Please use the corrected link for demos and submissions.
 
----
+## 🔗 Project Links
 
-## 🧭 Executive Overview
+- **Live prototype:** https://waypointai-gold.vercel.app/
+- **GitHub repository:** https://github.com/manikumarkundena/waypoint_ai
+- **Project report and supporting files:** https://drive.google.com/drive/folders/1XjKyFwUR0EIeNzTm-fTQY_XbKgfgBJzN?usp=sharing
 
-**WAYPOINT AI** is a premium, consumer-facing travel recovery assistant that helps travellers understand disruptions, compare real-world alternatives, and review an optimized replacement itinerary within seconds.
+## 🧭 Overview
 
-Instead of navigating crowded airport service desks, confusing carrier telephone queues, or complex policy manuals, WAYPOINT AI immediately answers:
-1. **What happened to my trip?**
-2. **What is my best alternative?**
-3. **How much will it cost?**
-4. **When will I arrive?**
-5. **What do I do next?**
+**WAYPOINT AI** is a consumer-facing travel recovery prototype that helps a traveller understand a simulated disruption, compare alternative journeys, and review a proposed recovery itinerary.
 
-The **recommended recovery itinerary is the centerpiece** of the product, presented with an editorial, human-first travel interface.
+It is designed around five practical questions:
 
----
+1. What happened to my trip?
+2. Which alternatives fit my preferences?
+3. What is the estimated cost?
+4. When would I arrive?
+5. Which option should I review next?
 
-## 🎨 Visual Design & Experience
+The recovery itinerary is the centrepiece of the experience, with a clear route visualization, traveller constraints, alternative comparisons, and an explicit review step.
 
-- **Aesthetic:** Warm off-white background (`#fafaf9`), deep midnight navy typography, vivid cobalt blue primary CTAs, soft sky-blue accents, and elegant emerald confirmation states.
-- **Hero Itinerary Card:** Prominent horizontal route timeline with origin, transfer nodes, destination, arrival delay difference, carrier details, and clear natural-language rationale:  
-  *"We chose this option because it arrives earliest (only +1h 35m delay), stays within your budget, and preserves a direct non-stop flight."*
-- **Alternative Routes Comparison:** 2 clean comparative cards below the hero card with concise trade-offs, transfer counts, and 1-click selection.
-- **Interactive Disruption Switcher:** Seamless switching across 3 realistic scenarios:
-  1. **Flight Cancellation:** British Airways BA-178 (JFK → LHR)
-  2. **High-Speed Train Delay:** Eurostar ES-9114 (London → Paris, 190 min delay)
-  3. **Missed Connection:** Lufthansa LH-401 hub delay at Frankfurt (FRA)
-- **Preferences Drawer:** Slide-over control panel for budget limits, maximum acceptable delay, transport mode preferences, and transfer tolerances.
-- **2-Step Review & Confirmation:** "Your recovery plan is ready" review with clear side-by-side journey changes and demo mode confirmation.
+## ✨ Main Features
 
----
+- **Three disruption scenarios:** flight cancellation, train delay, and missed connection.
+- **Traveller preferences:** budget, maximum acceptable delay, preferred transport mode, and transfer limit.
+- **Alternative comparison:** compare synthetic options using cost, duration, arrival time, and transfers.
+- **Recommendation rationale:** present understandable reasons based on the prototype's local evaluation rules.
+- **Recovery review:** select an itinerary and confirm it in demo mode.
+- **Responsive interface:** a travel-focused visual experience for desktop and mobile.
 
-## 🛠️ Architecture
+## 🧪 Important Prototype Scope
 
+This is a **frontend-only hackathon prototype**. It uses predefined synthetic travel scenarios and deterministic client-side logic. It does **not** connect to live airline or railway systems, verify real-time inventory or fares, purchase tickets, or modify actual bookings. Any approval shown in the interface is a demo state only.
+
+Please do not use the simulated itineraries to make real travel decisions. The prototype should not be described as a production-ready live booking service or as a trained machine-learning system.
+
+## 🎨 Design Direction
+
+- Warm off-white surfaces and deep navy typography.
+- Cobalt-blue primary actions and restrained disruption-status colours.
+- Route diagrams and itinerary timelines to make journeys easier to understand.
+- A featured recovery recommendation with comparable alternatives.
+- Clear simulated-data labels and user-controlled confirmation.
+
+## 🛠️ Technology and Architecture
+
+The application is implemented as a frontend web experience. The repository's current code and `package.json` are the source of truth for the exact framework and dependency versions.
+
+The intended client-side flow is:
+
+```text
+Traveller selects a disruption
+          ↓
+Synthetic scenario data
+          ↓
+Apply traveller constraints
+          ↓
+Filter and rank alternatives
+          ↓
+Review recovery itinerary
+          ↓
+Demo-only confirmation
 ```
-waypoint-ai/
-├── app/
-│   ├── layout.tsx                     # Editorial light-theme shell, metadata
-│   ├── not-found.tsx                  # Dedicated App Router 404 page
-│   ├── page.tsx                       # Main Consumer Travel Experience
-│   └── globals.css                    # Tailwind CSS v4 styling
-├── components/consumer/
-│   ├── Header.tsx                     # Minimalist travel header with tabs
-│   ├── HeroSection.tsx                # Consumer hero with destination card
-│   ├── DisruptionNotice.tsx           # Human-readable disruption notification
-│   ├── RecommendedRecoveryHero.tsx    # CENTERPIECE: Large itinerary hero
-│   ├── AlternativeCards.tsx           # Clean 2-column comparative routes
-│   ├── PreferencesDrawer.tsx          # Slide-over SLA & budget controls
-│   ├── ConfirmationModal.tsx          # 2-step review & demo approval modal
-│   ├── MyTripsView.tsx                # Scheduled journeys hub
-│   └── RecoveryPlansView.tsx          # Recovery itineraries repository
-├── lib/
-│   ├── types.ts                       # Strongly-typed travel models
-│   ├── mock-data.ts                   # Realistic multimodal scenarios & trips
-│   └── evaluation-engine.ts           # Deterministic scoring & human rationale
-└── package.json
-```
 
----
+No backend, database, live travel API, payment flow, or real booking integration is part of the current prototype.
 
-## 🚀 Running Locally
+## 🚀 Run Locally
+
+Make sure Node.js and npm are installed, then run:
 
 ```bash
-# Install dependencies
+git clone https://github.com/manikumarkundena/waypoint_ai.git
+cd waypoint_ai
 npm install
-
-# Run the development server
 npm run dev
-
-# Open in browser
-http://localhost:3000
 ```
 
-To run a production build:
+Open http://localhost:3000 in your browser.
+
+To verify a production build:
+
 ```bash
 npm run build
 npm run start
 ```
+
+## 🧭 Demo Checklist
+
+1. Open the corrected live prototype: https://waypointai-gold.vercel.app/
+2. Switch between the three disruption scenarios.
+3. Adjust traveller preferences.
+4. Compare the alternatives and select a recovery option.
+5. Review and approve the plan in demo mode.
+6. Confirm that the interface identifies the information as simulated and does not claim to change a real booking.
+
+## 📄 Report and Submission
+
+- **Project report / supporting files:** https://drive.google.com/drive/folders/1XjKyFwUR0EIeNzTm-fTQY_XbKgfgBJzN?usp=sharing
+- **Live demo:** https://waypointai-gold.vercel.app/
+- **Source code:** https://github.com/manikumarkundena/waypoint_ai
+
+---
+
+**WAYPOINT AI — When plans break, your journey doesn’t.**  
+*DEVHOST 2026 · PS 4.1 · Interactive prototype using simulated travel data*
